@@ -23,7 +23,7 @@
         </p>
     </div>
 
-    <div id="chart1"; height=2000px></div>
+    <div id="chart1"></div>
 
     <script type='text/javascript'>
         function plot(graph, chart) {
@@ -33,7 +33,9 @@
     </script>
     
     <py-script id="main">
-        import js
+        # a combination of https://community.plotly.com/t/plotly-with-pyscript-in-django-html-page/63821/3
+	# and https://github.com/alanjones2/Alan-Jones-article-code/blob/master/pyscript/weather2.html
+	import js
         import pandas as pd
         import plotly.express as px
         import json
@@ -79,6 +81,8 @@
                                      tickvals=vals,
                                      ticktext=txt,
                                      tickformat='","')
+
+        fig.update_layout(width = 1300, height=700)
 
         js.plot(fig.to_json(), "chart1")
     </py-script>
