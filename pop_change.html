@@ -18,7 +18,7 @@
 <body>
 
     <div class="jumbotron">
-        <h1>Population Movement in the US (2010-2019)</h1>
+        <h1>Domestic Population Movement in the US (2010-2019)</h1>
         <p class="lead">
         </p>
     </div>
@@ -34,8 +34,8 @@
     
     <py-script id="main">
         # a combination of https://community.plotly.com/t/plotly-with-pyscript-in-django-html-page/63821/3
-	# and https://github.com/alanjones2/Alan-Jones-article-code/blob/master/pyscript/weather2.html
-	import js
+        # and https://github.com/alanjones2/Alan-Jones-article-code/blob/master/pyscript/weather2.html
+        import js
         import pandas as pd
         import plotly.express as px
         import json
@@ -75,13 +75,11 @@
                             labels={
                                 'tot_pop': 'Total Population',
                                 'percent': 'Percent Changed',
-	    			'stud_res': "Stud Residuals'
+                                'stud_res': "Stud Residuals'
                             })
 
         fig.layout.coloraxis.colorbar = dict(title='Studentized Residuals')
-
         fig.update_layout(width = 1300, height=700)
-
         js.plot(fig.to_json(), "chart1")
     </py-script>
 
