@@ -50,12 +50,12 @@
         url_content = open_url('https://raw.githubusercontent.com/mxw010/mxw010.github.io/main/data/population_change.csv')
         pop = pd.read_csv(url_content) 
 
-        txt = [-100000, -100, 1, 100, 100000]
-        vals = [np.sign(x) * np.log(abs(x)) for x in txt]
+        #txt = [-100000, -100, 1, 100, 100000]
+        #vals = [np.sign(x) * np.log(abs(x)) for x in txt]
         fig = px.choropleth_mapbox(pop,
                             geojson=counties,
                             locations='fips',
-                            color='domestic_log',
+                            color='stud_res',
                             hover_name='County',
                             hover_data={
                                 'fips': False,
@@ -74,13 +74,11 @@
                             zoom=4,
                             labels={
                                 'tot_pop': 'Total Population',
-                                'percent': 'Percent Changed'
+                                'percent': 'Percent Changed',
+	    			'stud_res': "Stud Residuals'
                             })
 
-        fig.layout.coloraxis.colorbar = dict(title='Population Change',
-                                     tickvals=vals,
-                                     ticktext=txt,
-                                     tickformat='","')
+        fig.layout.coloraxis.colorbar = dict(title='Studentized Residuals')
 
         fig.update_layout(width = 1300, height=700)
 
